@@ -55,7 +55,7 @@ class Api(
 
     def __init__(self, *args, **kwargs):
         appier.OAuth2Api.__init__(self, *args, **kwargs)
-        self.client_id = appier.conf("ZD_DOMAIN", CLIENT_ID)
+        self.client_id = appier.conf("ZD_DOMAIN", DOMAIN)
         self.client_secret = appier.conf("GOOGLE_SECRET", CLIENT_SECRET)
         self.redirect_url = appier.conf("GOOGLE_REDIRECT_URL", REDIRECT_URL)
         self.base_url = kwargs.get("base_url", BASE_URL)
