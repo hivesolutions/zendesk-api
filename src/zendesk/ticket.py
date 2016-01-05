@@ -48,6 +48,6 @@ class TicketApi(object):
     def create_ticket(self, payload):
         payload = dict(ticket = payload)
         url = self.base_url + "tickets.json"
-        contents = self.post(url)
+        contents = self.post(url, data_j = payload)
         ticket = contents["ticket"]
         return ticket

@@ -42,7 +42,14 @@ class UserApi(object):
     def create_user(self, payload):
         payload = dict(user = payload)
         url = self.base_url + "users.json"
-        contents = self.post(url)
+        contents = self.post(url, data_j = payload)
+        user = contents["user"]
+        return user
+
+    def create_update_user(self, payload):
+        payload = dict(user = payload)
+        url = self.base_url + "users/create_or_update.json"
+        contents = self.post(url, data_j = payload)
         user = contents["user"]
         return user
 
