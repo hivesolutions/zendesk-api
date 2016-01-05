@@ -1,0 +1,27 @@
+sudo: false
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "nightly"
+  - "pypy"
+  - "pypy3"
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+  - pip install twine
+script: if [[ $TRAVIS_PYTHON_VERSION != "3.2" ]]; then coverage run --source=live setup.py test; else python setup.py test; fi
+after_success: coveralls
+deploy:
+  provider: pypi
+  user: joamag
+  password:
+    secure: VsWFOhMaWGvkPy3dtlrRv8XLaCn+AbG5SNVCycoFlcHo/e7zjckrQeMVpHj/flQhpudonWIvQqvRv5qCD/3D6Yfrmwa7pwTyY3dBFm6E27hgcQeZObJlzMeCOds1jsQ3fvOOE5KvMaR2FcjhgXYNi9LcSqR26gmJmj5ZI35t2Qg=
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+    python: "2.7"
