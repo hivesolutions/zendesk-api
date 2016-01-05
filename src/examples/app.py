@@ -37,48 +37,29 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import base64
-
 import appier
 
-from . import user
-from . import ticket
+from . import base
 
-DOMAIN = "https://www.googleapis.com/"
-""" The default base url to be used when no other
-base url value is provided to the constructor """
+class ZendeskApp(appier.WebApp):
 
-class Api(
-    appier.OAuth2Api,
-    user.UserApi,
-    ticket.TicketApi
-):
+    def __init__(self):
+        appier.WebApp.__init__(self, name = "live")
 
-    def __init__(self, *args, **kwargs):
-        appier.Api.__init__(self, *args, **kwargs)
-        self.client_id = appier.conf("ZD_DOMAIN", DOMAIN)
-        self.username = appier.conf("ZD_USERNAME", None)
-        self.token = appier.conf("ZD_TOKEN", None)
+    @appier.route("/", "GET")
+    def index(self):
+        return self.tickets()
 
-    def build(
-        self,
-        method,
-        url,
-        data = None,
-        data_j = None,
-        data_m = None,
-        headers = None,
-        params = None,
-        mime = None,
-        kwargs = None
-    ):
-        auth = kwargs.pop("auth", True)
-        if auth: headers["Authorization"] = self.get_authorization()
+    @appier.route("/tickets", "GET")
+    def me(self):
+        api = self.get_api()
+        tickets = api.list_tickets()
+        return tickets
 
-    def get_authorization(self):
-        if not self.username or not self.token: None
-        payload = "%s/token:%s" % (self.username, self.token)
-        payload = appier.legacy.bytes(payload)
-        authorization = base64.b64encode(payload)
-        authorization = appier.legacy.str(authorization)
-        return "Basic %s" % authorization
+    def get_api(self):
+        api = base.get_api()
+        return api
+
+if __name__ == "__main__":
+    app = ZendeskApp()
+    app.serve()
