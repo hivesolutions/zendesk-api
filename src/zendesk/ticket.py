@@ -39,6 +39,12 @@ __license__ = "GNU General Public License (GPL), Version 3"
 
 class TicketApi(object):
 
+    def list_tickets(self):
+        url = self.base_url + "tickets.json"
+        contents = self.get(url)
+        tickets = contents["tickets"]
+        return tickets
+
     def create_ticket(self, payload):
         payload = dict(ticket = payload)
         url = self.base_url + "tickets.json"

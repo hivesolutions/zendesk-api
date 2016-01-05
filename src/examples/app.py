@@ -39,7 +39,7 @@ __license__ = "GNU General Public License (GPL), Version 3"
 
 import appier
 
-from . import base
+import base
 
 class ZendeskApp(appier.WebApp):
 
@@ -51,7 +51,7 @@ class ZendeskApp(appier.WebApp):
         return self.tickets()
 
     @appier.route("/tickets", "GET")
-    def me(self):
+    def tickets(self):
         api = self.get_api()
         tickets = api.list_tickets()
         return tickets

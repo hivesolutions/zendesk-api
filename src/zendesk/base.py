@@ -49,16 +49,17 @@ DOMAIN = "https://www.googleapis.com/"
 base url value is provided to the constructor """
 
 class Api(
-    appier.OAuth2Api,
+    appier.Api,
     user.UserApi,
     ticket.TicketApi
 ):
 
     def __init__(self, *args, **kwargs):
         appier.Api.__init__(self, *args, **kwargs)
-        self.client_id = appier.conf("ZD_DOMAIN", DOMAIN)
+        self.domain = appier.conf("ZD_DOMAIN", DOMAIN)
         self.username = appier.conf("ZD_USERNAME", None)
         self.token = appier.conf("ZD_TOKEN", None)
+        self.base_url = "https://%s/api/v2/" % self.domain
 
     def build(
         self,
@@ -78,6 +79,7 @@ class Api(
     def get_authorization(self):
         if not self.username or not self.token: None
         payload = "%s/token:%s" % (self.username, self.token)
+        print(payload)
         payload = appier.legacy.bytes(payload)
         authorization = base64.b64encode(payload)
         authorization = appier.legacy.str(authorization)
