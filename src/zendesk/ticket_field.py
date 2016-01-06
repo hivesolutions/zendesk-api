@@ -37,35 +37,10 @@ __copyright__ = "Copyright (c) 2008-2015 Hive Solutions Lda."
 __license__ = "GNU General Public License (GPL), Version 3"
 """ The license for the module """
 
-import appier
+class TicketFieldApi(object):
 
-from . import base
-
-class ZendeskApp(appier.WebApp):
-
-    def __init__(self):
-        appier.WebApp.__init__(self, name = "live")
-
-    @appier.route("/", "GET")
-    def index(self):
-        return self.tickets()
-
-    @appier.route("/tickets", "GET")
-    def tickets(self):
-        api = self.get_api()
-        tickets = api.list_tickets()
-        return tickets
-
-    @appier.route("/ticket_fields", "GET")
-    def ticket_fields(self):
-        api = self.get_api()
-        ticket_fields = api.list_ticket_fields()
+    def list_ticket_fields(self):
+        url = self.base_url + "ticket_fields.json"
+        contents = self.get(url)
+        ticket_fields = contents["ticket_fields"]
         return ticket_fields
-
-    def get_api(self):
-        api = base.get_api()
-        return api
-
-if __name__ == "__main__":
-    app = ZendeskApp()
-    app.serve()

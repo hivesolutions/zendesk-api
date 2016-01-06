@@ -43,6 +43,7 @@ import appier
 
 from . import user
 from . import ticket
+from . import ticket_field
 
 DOMAIN = "https://www.googleapis.com/"
 """ The default base url to be used when no other
@@ -51,7 +52,8 @@ base url value is provided to the constructor """
 class Api(
     appier.Api,
     user.UserApi,
-    ticket.TicketApi
+    ticket.TicketApi,
+    ticket_field.TicketFieldApi
 ):
 
     def __init__(self, *args, **kwargs):
