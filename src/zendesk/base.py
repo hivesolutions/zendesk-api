@@ -61,6 +61,8 @@ class Api(
         self.domain = appier.conf("ZD_DOMAIN", DOMAIN)
         self.username = appier.conf("ZD_USERNAME", None)
         self.token = appier.conf("ZD_TOKEN", None)
+        self.username = kwargs.get("username", self.username)
+        self.token = kwargs.get("token", self.token)
         self.base_url = "https://%s/api/v2/" % self.domain
 
     def build(
