@@ -37,5 +37,5 @@ __license__ = "GNU General Public License (GPL), Version 3"
 from . import app
 from . import base
 
-from .app import LiveApp
+from .app import ZendeskApp
 from .base import get_api
