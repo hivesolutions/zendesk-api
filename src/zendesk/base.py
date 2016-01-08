@@ -45,9 +45,9 @@ from . import user
 from . import ticket
 from . import ticket_field
 
-DOMAIN = "https://www.googleapis.com/"
-""" The default base url to be used when no other
-base url value is provided to the constructor """
+DOMAIN = "domain.zendesk.com"
+""" The default domain to be used when no other
+domain value is provided to the constructor """
 
 class Api(
     appier.Api,
