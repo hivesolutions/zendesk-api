@@ -43,8 +43,12 @@ from . import base
 
 class ZendeskApp(appier.WebApp):
 
-    def __init__(self):
-        appier.WebApp.__init__(self, name = "zendesk")
+    def __init__(self, *args, **kwargs):
+        appier.WebApp.__init__(
+            self,
+            name = "zendesk",
+            *args, **kwargs
+        )
 
     @appier.route("/", "GET")
     def index(self):
