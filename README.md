@@ -1,3 +1,3 @@
-# [Zendesk API](http://zendesk_api.hive.pt)
+# [Zendesk API](http://zendesk-api.hive.pt)
 
 Python Zendesk API client.
