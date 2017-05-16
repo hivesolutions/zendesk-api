@@ -48,7 +48,7 @@ setuptools.setup(
     description = "Zendesk API Client",
     license = "Apache License, Version 2.0",
     keywords = "zendesk api",
-    url = "http://zendesk_api.hive.pt",
+    url = "http://zendesk-api.hive.pt",
     zip_safe = False,
     packages = [
         "zendesk"
