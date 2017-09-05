@@ -39,7 +39,7 @@ from . import ticket
 from . import ticket_field
 from . import user
 
-from .base import DOMAIN, Api
-from .ticket import TicketApi
-from .ticket_field import TicketFieldApi
-from .user import UserApi
+from .base import DOMAIN, API
+from .ticket import TicketAPI
+from .ticket_field import TicketFieldAPI
+from .user import UserAPI

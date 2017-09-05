@@ -49,15 +49,15 @@ DOMAIN = "domain.zendesk.com"
 """ The default domain to be used when no other
 domain value is provided to the constructor """
 
-class Api(
-    appier.Api,
-    user.UserApi,
-    ticket.TicketApi,
-    ticket_field.TicketFieldApi
+class API(
+    appier.API,
+    user.UserAPI,
+    ticket.TicketAPI,
+    ticket_field.TicketFieldAPI
 ):
 
     def __init__(self, *args, **kwargs):
-        appier.Api.__init__(self, *args, **kwargs)
+        appier.API.__init__(self, *args, **kwargs)
         self.domain = appier.conf("ZD_DOMAIN", DOMAIN)
         self.username = appier.conf("ZD_USERNAME", None)
         self.token = appier.conf("ZD_TOKEN", None)

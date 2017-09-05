@@ -42,7 +42,7 @@ import appier
 import zendesk
 
 def get_api():
-    return zendesk.Api(
+    return zendesk.API(
         domain = appier.conf("ZD_DOMAIN"),
         username = appier.conf("ZD_USERNAME"),
         token = appier.conf("ZD_TOKEN")

@@ -37,7 +37,7 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-class TicketFieldApi(object):
+class TicketFieldAPI(object):
 
     def list_ticket_fields(self):
         url = self.base_url + "ticket_fields.json"
