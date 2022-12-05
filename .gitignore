@@ -5,4 +5,4 @@ session.shelve*
 
 /dist
 /build
-/src/zendesk-api.egg-info
+/src/zendesk_api.egg-info
