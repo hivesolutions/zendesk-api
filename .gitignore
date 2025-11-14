@@ -3,6 +3,8 @@
 
 session.shelve*
 
+/.venv
+
 /dist
 /build
 /src/zendesk_api.egg-info
